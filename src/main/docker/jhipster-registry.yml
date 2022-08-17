@@ -27,3 +27,4 @@ services:
     # remove the "127.0.0.1:" prefix
     ports:
       - 127.0.0.1:8761:8761
+    container_name: jhipster_registry

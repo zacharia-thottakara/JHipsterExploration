@@ -19,6 +19,8 @@ services:
     # remove the "127.0.0.1:" prefix
     ports:
       - 127.0.0.1:8080:8080
+    container_name: jhipsterex_app
+
   jhipsterex-neo4j:
     image: neo4j:4.4.8
     # volumes:
@@ -30,6 +32,7 @@ services:
     ports:
       - '127.0.0.1:7474:7474'
       - '127.0.0.1:7687:7687'
+    container_name: jhipsterex_neo4j
   kafka:
     image: confluentinc/cp-kafka:7.1.1
     # If you want to expose these ports outside your dev PC,
@@ -49,6 +52,7 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
+    container_name: zookeeper
   jhipster-registry:
     image: jhipster/jhipster-registry:v7.3.0
     volumes:
@@ -76,6 +80,7 @@ services:
     # remove the "127.0.0.1:" prefix
     ports:
       - 127.0.0.1:8761:8761
+    container_name: jhipster_registry
   keycloak:
     image: quay.io/keycloak/keycloak:18.0.0
     command: ['start-dev --import-realm']
@@ -93,3 +98,4 @@ services:
     ports:
       - 127.0.0.1:9080:9080
       - 127.0.0.1:9443:9443
+    container_name: keycloak

@@ -18,3 +18,4 @@ services:
     ports:
       - 127.0.0.1:9080:9080
       - 127.0.0.1:9443:9443
+    container_name: jhipster_keycloak

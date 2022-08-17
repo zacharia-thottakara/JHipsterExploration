@@ -434,7 +434,6 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [angular cli]: https://cli.angular.io/
 [gatling]: https://gatling.io/
 
-
 ## Manual Information
 
 Java:
@@ -454,20 +453,26 @@ yarn:
 git:
 2.30.2
 
+Docker:
+20.10.5+dfsg1, build 55c4c88
+
+docker-compose:
+1.25.0, build unknown
+
 ## Jhipster initial options chosen
 
 The project can be re-generated from the yo-rc.json file, but here are the responses to the options for clarification
 
-? Which *type* of application would you like to create? Monolithic application (recommended for simple projects)
+? Which _type_ of application would you like to create? Monolithic application (recommended for simple projects)
 ? What is the base name of your application? JHipsterEx
 ? Do you want to make it reactive with Spring WebFlux? Yes
 ? What is your default Java package name? edu.jhipsterex.example
-? Which *type* of authentication would you like to use? OAuth 2.0 / OIDC Authentication (stateful, works with Keycloak and Okta)
-? Which *type* of database would you like to use? [BETA] Neo4j
+? Which _type_ of authentication would you like to use? OAuth 2.0 / OIDC Authentication (stateful, works with Keycloak and Okta)
+? Which _type_ of database would you like to use? [BETA] Neo4j
 ? Would you like to use Maven or Gradle for building the backend? Gradle
 ? Do you want to use the JHipster Registry to configure, monitor and scale your application? Yes
 ? Which other technologies would you like to use? Apache Kafka as asynchronous messages broker
-? Which *Framework* would you like to use for the client? Angular
+? Which _Framework_ would you like to use for the client? Angular
 ? Do you want to generate the admin UI? Yes
 ? Would you like to use a Bootswatch theme (https://bootswatch.com/)? Solar
 ? Choose a Bootswatch variant navbar theme (https://bootswatch.com/)? Dark
@@ -478,4 +483,3 @@ The project can be re-generated from the yo-rc.json file, but here are the respo
 ? Would you like to install other generators from the JHipster Marketplace? No
 ? Would you like to generate code coverage for Cypress tests? [Experimental] Yes
 ? Would you like to audit Cypress tests? Yes
-
