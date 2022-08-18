@@ -878,7 +878,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "web_app",
+      "secret": "thisshouldbeasecretofsufficientlengthorilladdmoreasneeded",
       "redirectUris": [
         "dev.localhost.ionic:*",
         "http://127.0.0.1:*",

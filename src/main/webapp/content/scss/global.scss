@@ -200,3 +200,75 @@ angular-cli removes postcss-rtl processed inline css, processed rules must be ad
   }
 }
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+
+/* ===============================================================
+Custom styles for JhipsterEx
+If issues are found in the below configuration, it may have to 
+	do with a re-definition error as some of these are
+	defined above as well.
+One resolution would be to merge the components with the above
+	definitions
+================================================================*/
+
+.jh-card {
+  border: none !important;
+}
+
+.jh-navbar {
+  background-color: #02a899 !important;
+}
+
+.blockquote {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem !important;
+  font-weight: 100;
+  border-left: 0.25rem solid #eceeef;
+}
+
+//Should this be .a?
+a {
+  font-weight: normal !important;
+}
+
+.truncate {
+  width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  &.cal-day-notes {
+    width: 150px;
+  }
+}
+
+.footer {
+  bottom: 0;
+  left: 0;
+  color: #666;
+  background: #eee;
+  border-top: 1px solid silver;
+  position: fixed;
+  width: 100%;
+  padding: 10px;
+  padding-bottom: 0;
+  text-align: center;
+  z-index: 2;
+  font-size: 0.9em;
+  p {
+    margin-bottom: 7px;
+  }
+}
+.thread-dump-modal-lock {
+  max-width: 450px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table {
+  th,
+  td {
+    vertical-align: middle !important;
+  }
+}

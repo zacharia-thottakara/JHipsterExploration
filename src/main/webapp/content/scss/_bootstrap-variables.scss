@@ -4,3 +4,39 @@
  * https://github.com/twbs/bootstrap/blob/v5.1.3/scss/_variables.scss can be overwritten here
  * Make sure not to add !default to values here
  */
+
+// Colors:
+$primary: #02a899;
+$success: #59d45e;
+$info: #c4c928;
+$warning: #f78d36;
+$danger: #ff1c4d;
+$blue: #157cd4;
+
+// Options:
+$enable-rounded: true;
+$enable-shadows: true;
+$enable-gradients: true;
+$enable-transitions: true;
+$enable-hover-media-query: true;
+$enable-grid-classes: true;
+$enable-print-styles: true;
+
+// Components:
+$border-radius: 0.15rem;
+$border-radius-lg: 0.125rem;
+$border-radius-sm: 0.1rem;
+
+// Body:
+$body-bg: #b0a4a4;
+
+// Typography
+
+$font-size-base: 0.9rem;
+$border-radius: 2px;
+$border-radius-sm: 1px;
+$font-family-sans-serif: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+$headings-font-weight: 300;
+$link-color: $primary;
+$input-focus-border-color: lighten($blue, 25%);
+$input-focus-box-shadow: darken($body-bg, 25%);
