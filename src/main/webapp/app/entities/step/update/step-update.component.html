@@ -1,0 +1,105 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-step-heading" data-cy="StepCreateUpdateHeading">Create or edit a Step</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required"> This field is required. </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_note">Note</label>
+          <input type="text" class="form-control" name="note" id="field_note" data-cy="note" formControlName="note" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_do_next">Do Next</label>
+          <select
+            class="form-control"
+            id="field_do_next"
+            data-cy="do_next"
+            name="do_next"
+            formControlName="do_next"
+            [compareWith]="compareStep"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="stepOption" *ngFor="let stepOption of do_nextsCollection">{{ stepOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_dependent_on">Dependent On</label>
+          <select
+            class="form-control"
+            id="field_dependent_on"
+            data-cy="dependent_on"
+            name="dependent_on"
+            formControlName="dependent_on"
+            [compareWith]="compareStep"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="stepOption" *ngFor="let stepOption of dependent_onsCollection">{{ stepOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_action_of">Action Of</label>
+          <select
+            class="form-control"
+            id="field_action_of"
+            data-cy="action_of"
+            name="action_of"
+            formControlName="action_of"
+            [compareWith]="compareEvent"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="eventOption" *ngFor="let eventOption of eventsSharedCollection">{{ eventOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_action_for">Action For</label>
+          <select
+            class="form-control"
+            id="field_action_for"
+            data-cy="action_for"
+            name="action_for"
+            formControlName="action_for"
+            [compareWith]="comparePerson"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="personOption" *ngFor="let personOption of peopleSharedCollection">{{ personOption.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

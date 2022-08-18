@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="step">
+      <h2 data-cy="stepDetailsHeading"><span>Step</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ step.id }}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+          <span>{{ step.name }}</span>
+        </dd>
+        <dt><span>Note</span></dt>
+        <dd>
+          <span>{{ step.note }}</span>
+        </dd>
+        <dt><span>Do Next</span></dt>
+        <dd>
+          <div *ngIf="step.do_next">
+            <a [routerLink]="['/step', step.do_next.id, 'view']">{{ step.do_next?.name }}</a>
+          </div>
+        </dd>
+        <dt><span>Dependent On</span></dt>
+        <dd>
+          <div *ngIf="step.dependent_on">
+            <a [routerLink]="['/step', step.dependent_on.id, 'view']">{{ step.dependent_on?.name }}</a>
+          </div>
+        </dd>
+        <dt><span>Action Of</span></dt>
+        <dd>
+          <div *ngIf="step.action_of">
+            <a [routerLink]="['/event', step.action_of.id, 'view']">{{ step.action_of?.name }}</a>
+          </div>
+        </dd>
+        <dt><span>Action For</span></dt>
+        <dd>
+          <div *ngIf="step.action_for">
+            <a [routerLink]="['/person', step.action_for.id, 'view']">{{ step.action_for?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/step', step.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

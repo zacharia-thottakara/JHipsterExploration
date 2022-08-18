@@ -1,0 +1,112 @@
+<div>
+  <h2 id="page-heading" data-cy="StepHeading">
+    <span>Steps</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-step"
+        [routerLink]="['/step/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Step </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="steps?.length === 0">
+    <span>No Steps found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="steps && steps.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name"><span>Name</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="note"><span>Note</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="do_next.name"><span>Do Next</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dependent_on.name"><span>Dependent On</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="action_of.name"><span>Action Of</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="action_for.name"><span>Action For</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let step of steps; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/step', step.id, 'view']">{{ step.id }}</a>
+          </td>
+          <td>{{ step.name }}</td>
+          <td>{{ step.note }}</td>
+          <td>
+            <div *ngIf="step.do_next">
+              <a [routerLink]="['/step', step.do_next.id, 'view']">{{ step.do_next?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="step.dependent_on">
+              <a [routerLink]="['/step', step.dependent_on.id, 'view']">{{ step.dependent_on?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="step.action_of">
+              <a [routerLink]="['/event', step.action_of.id, 'view']">{{ step.action_of?.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="step.action_for">
+              <a [routerLink]="['/person', step.action_for.id, 'view']">{{ step.action_for?.name }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/step', step.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/step', step.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(step)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="steps && steps.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

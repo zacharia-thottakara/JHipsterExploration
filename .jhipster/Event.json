@@ -1,0 +1,49 @@
+{
+  "changelogDate": "20220818172959",
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "64"
+    },
+    {
+      "fieldName": "initial",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "repeat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Event",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "person",
+      "relationshipName": "owned_by",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "step",
+      "otherEntityRelationshipName": "action_of",
+      "relationshipName": "must_do",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "person",
+      "otherEntityRelationshipName": "can_see",
+      "relationshipName": "shared_to",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

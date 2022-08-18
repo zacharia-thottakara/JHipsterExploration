@@ -1,0 +1,60 @@
+{
+  "changelogDate": "20220818174942",
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "64"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique", "pattern"],
+      "fieldValidateRulesPattern": "^\\S+@\\S+\\.\\S+$"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Person",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "person",
+      "otherEntityRelationshipName": "shares_with",
+      "ownerSide": true,
+      "relationshipName": "shares_with",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "event",
+      "otherEntityRelationshipName": "owned_by",
+      "relationshipName": "responsible_for",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "step",
+      "otherEntityRelationshipName": "action_for",
+      "relationshipName": "must_do",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "step",
+      "relationshipName": "can_do",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "event",
+      "relationshipName": "can_see",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

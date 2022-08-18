@@ -1,0 +1,49 @@
+{
+  "changelogDate": "20220818175112",
+  "dto": "no",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Step",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "step",
+      "otherEntityRelationshipName": "dependent_on",
+      "ownerSide": true,
+      "relationshipName": "do_next",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "step",
+      "otherEntityRelationshipName": "do_next",
+      "ownerSide": true,
+      "relationshipName": "dependent_on",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "event",
+      "relationshipName": "action_of",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "person",
+      "relationshipName": "action_for",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

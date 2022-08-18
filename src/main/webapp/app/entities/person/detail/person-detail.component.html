@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="person">
+      <h2 data-cy="personDetailsHeading"><span>Person</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ person.id }}</span>
+        </dd>
+        <dt><span>Name</span></dt>
+        <dd>
+          <span>{{ person.name }}</span>
+        </dd>
+        <dt><span>Email</span></dt>
+        <dd>
+          <span>{{ person.email }}</span>
+        </dd>
+        <dt><span>Note</span></dt>
+        <dd>
+          <span>{{ person.note }}</span>
+        </dd>
+        <dt><span>Shares With</span></dt>
+        <dd>
+          <div *ngIf="person.shares_with">
+            <a [routerLink]="['/person', person.shares_with.id, 'view']">{{ person.shares_with?.name }}</a>
+          </div>
+        </dd>
+        <dt><span>Can Do</span></dt>
+        <dd>
+          <div *ngIf="person.can_do">
+            <a [routerLink]="['/step', person.can_do.id, 'view']">{{ person.can_do?.name }}</a>
+          </div>
+        </dd>
+        <dt><span>Can See</span></dt>
+        <dd>
+          <div *ngIf="person.can_see">
+            <a [routerLink]="['/event', person.can_see.id, 'view']">{{ person.can_see?.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/person', person.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
