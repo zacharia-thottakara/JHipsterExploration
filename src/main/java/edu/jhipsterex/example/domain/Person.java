@@ -229,11 +229,21 @@ public class Person implements Serializable {
     // prettier-ignore
     @Override
     public String toString() {
-        return "Person{" +
+		Set<Event> events = getResponsible_fors();
+		String responsible_for="";
+		if (events.size() == 0){responsible_for = "0";}
+		else { for (Event e : events) {responsible_for = responsible_for + e.getName() + ", ";}}
+		String shares_with = "";
+		if (getShares_with() == null) { shares_with="No One";}
+		else {shares_with=getShares_with().getName();}
+        String info =  "Person{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", email='" + getEmail() + "'" +
             ", note='" + getNote() + "'" +
+			", shares_with='" + shares_with + "'" +
+			", responsible_for='" + responsible_for + "'" +
             "}";
+		return info;
     }
 }
